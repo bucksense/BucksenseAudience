@@ -337,11 +337,15 @@ const setInWindow = require('setInWindow');
 const getRef  = require('getUrl');
 const encodeUriComponent = require('encodeUriComponent');
 
-const audience_ID = data.audience_ID;
-const product_ID = data.product_ID;
-const site_ID = data.site_ID;
+var audience_ID = data.audience_ID;
+var product_ID = data.product_ID;
+var site_ID = data.site_ID;
 
+if (audience_ID) {audience_ID = encodeUriComponent(audience_ID); }
 
+if (product_ID) {product_ID = encodeUriComponent(product_ID); }
+
+if (site_ID) {site_ID = encodeUriComponent(site_ID); }
 
 setInWindow('bks_cid', '2', true);
 setInWindow('bks_sid', site_ID, true);
@@ -389,4 +393,4 @@ inject(newurl, onSuccess, onFailure);
 
 ___NOTES___
 
-Created on 8/19/2019, 1:12:42 PM
+Created on 8/20/2019, 11:24:56 AM
