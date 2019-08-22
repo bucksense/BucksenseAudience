@@ -26,19 +26,29 @@ ___TEMPLATE_PARAMETERS___
     "displayName": "Audience ID",
     "simpleValueType": true,
     "name": "audience_ID",
-    "type": "TEXT"
+    "type": "TEXT",
+    "canBeEmptyString": true
   },
   {
     "displayName": "Site ID",
     "simpleValueType": true,
     "name": "site_ID",
-    "type": "TEXT"
+    "type": "TEXT",
+    "canBeEmptyString": true
   },
   {
     "displayName": "Product ID",
     "simpleValueType": true,
     "name": "product_ID",
-    "type": "TEXT"
+    "type": "TEXT",
+    "canBeEmptyString": true
+  },
+  {
+    "displayName": "Company ID",
+    "simpleValueType": true,
+    "name": "company_ID",
+    "type": "TEXT",
+    "canBeEmptyString": true
   }
 ]
 
@@ -340,14 +350,17 @@ const encodeUriComponent = require('encodeUriComponent');
 var audience_ID = data.audience_ID;
 var product_ID = data.product_ID;
 var site_ID = data.site_ID;
+var company_ID = data.company_ID;
 
-if (audience_ID) {audience_ID = encodeUriComponent(audience_ID); }
+if (audience_ID) { audience_ID = encodeUriComponent(audience_ID);}
+if (product_ID) {product_ID = encodeUriComponent(product_ID);}
+if (site_ID)  { encodeUriComponent(site_ID);}
+if (company_ID) { encodeUriComponent(company_ID);}
 
-if (product_ID) {product_ID = encodeUriComponent(product_ID); }
 
-if (site_ID) {site_ID = encodeUriComponent(site_ID); }
 
-setInWindow('bks_cid', '2', true);
+
+setInWindow('bks_cid', company_ID, true);
 setInWindow('bks_sid', site_ID, true);
 setInWindow('bks_pid', product_ID, true);
 setInWindow('bks_audience', audience_ID, true);
@@ -393,4 +406,4 @@ inject(newurl, onSuccess, onFailure);
 
 ___NOTES___
 
-Created on 8/20/2019, 11:24:56 AM
+Created on 8/22/2019, 2:55:05 PM
