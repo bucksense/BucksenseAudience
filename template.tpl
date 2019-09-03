@@ -49,6 +49,20 @@ ___TEMPLATE_PARAMETERS___
     "name": "company_ID",
     "type": "TEXT",
     "canBeEmptyString": true
+  },
+  {
+    "displayName": "offer_ID used to track UTM clicks (not mandatory)",
+    "simpleValueType": true,
+    "name": "offer_ID",
+    "type": "TEXT",
+    "canBeEmptyString": true
+  },
+  {
+    "displayName": "publisher_ID used to track UTM clicks (not mandatory",
+    "simpleValueType": true,
+    "name": "publisher_ID",
+    "type": "TEXT",
+    "canBeEmptyString": true
   }
 ]
 
@@ -306,6 +320,84 @@ ___WEB_PERMISSIONS___
                     "boolean": true
                   }
                 ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "bks_offer"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  }
+                ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "bks_publisher"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  }
+                ]
               }
             ]
           }
@@ -351,11 +443,16 @@ var audience_ID = data.audience_ID;
 var product_ID = data.product_ID;
 var site_ID = data.site_ID;
 var company_ID = data.company_ID;
+var offer_ID = data.offer_ID;
+var publisher_ID = data.publisher_ID;
+
 
 if (audience_ID) { audience_ID = encodeUriComponent(audience_ID);}
 if (product_ID) {product_ID = encodeUriComponent(product_ID);}
 if (site_ID)  { encodeUriComponent(site_ID);}
 if (company_ID) { encodeUriComponent(company_ID);}
+if (offer_ID) { encodeUriComponent(offer_ID);}
+if (publisher_ID) { encodeUriComponent(publisher_ID);}
 
 
 
@@ -364,6 +461,8 @@ setInWindow('bks_cid', company_ID, true);
 setInWindow('bks_sid', site_ID, true);
 setInWindow('bks_pid', product_ID, true);
 setInWindow('bks_audience', audience_ID, true);
+setInWindow('bks_offer', offer_ID, true);
+setInWindow('bks_publisher', publisher_ID, true);
 
 
 var url = getRef();
@@ -384,7 +483,7 @@ const onSuccess = () => {
 
 
 
-var newurl ="https://j.bksn.se/audience.js";
+var newurl ="https://j.bksn.se/audience_new.js";
 
 // If the script fails to load, log a message and signal failure
 const onFailure = () => {
@@ -406,4 +505,4 @@ inject(newurl, onSuccess, onFailure);
 
 ___NOTES___
 
-Created on 8/22/2019, 2:55:05 PM
+Created on 8/30/2019, 9:05:52 AM
