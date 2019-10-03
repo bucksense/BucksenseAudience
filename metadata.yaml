@@ -2,5 +2,5 @@ homepage: "www.bucksense.com"
 documentation: "https://howto.bucksense.com"
 versions:
   -
-    sha: 814e49e8260261bea83e5e099db9f4f19de2d03f
+    sha: d77efb5d5f2119b20ca8c7a3202726efe935b8f8
     changeNotes: Initial release.
